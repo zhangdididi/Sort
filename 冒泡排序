@@ -1,0 +1,9 @@
+public static void bubbleSort(int[] array) {
+    for (int bound = 0; bound < array.length; bound++) {
+        for (int i = array.length - 1; i > bound; i--) {
+            if (array[i - 1] > array[i]) {
+                swap(array, i - 1, i);
+            }
+        }
+    }
+}
