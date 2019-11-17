@@ -1,39 +1,39 @@
-    public static void headSort(int[] array) {
-        //1. 创建堆
-        createHeap(array);
-        //2. 循环取出堆顶元素，放到最后
-        for (int i = 0; i < array.length; i++) {
-            //已排序区间 [0, arrat.length - i)
-            //带排序区间 [array.length - i, array.length)
-            //将堆顶元素和最后一个交换
-            swap(array, 0, array.length - 1 - i);
-            // 有效元素的个数，表示范围就是待排序区间内的.
-            shiftDown(array, array.length - 1 - i, 0);
-        }
+public static void headSort(int[] array) {
+    //1. 创建堆
+    createHeap(array);
+    //2. 循环取出堆顶元素，放到最后
+    for (int i = 0; i < array.length; i++) {
+        //已排序区间 [0, arrat.length - i)
+        //带排序区间 [array.length - i, array.length)
+        //将堆顶元素和最后一个交换
+        swap(array, 0, array.length - 1 - i);
+        // 有效元素的个数，表示范围就是待排序区间内的.
+        shiftDown(array, array.length - 1 - i, 0);
     }
+}
 
-    public static void createHeap(int[] array) {
-        //最后一个非叶子结点，出发从后往前依次调整
-        for (int i = (array.length - 1 - 1) / 2; i >= 0; i--) {
-            shiftDown(array, array.length, i);
-        }
+public static void createHeap(int[] array) {
+    //最后一个非叶子结点，出发从后往前依次调整
+    for (int i = (array.length - 1 - 1) / 2; i >= 0; i--) {
+        shiftDown(array, array.length, i);
     }
+}
 
-    //时间复杂度 O(logN)
-    public static void shiftDown(int[] array, int size, int index) {
-        int parent = index;//从父结点开始
-        int child = 2 * parent + 1;
-        while (child < size) {
-            if (child + 1 < size && array[child + 1] > array[child]) {
-                child = child + 1;
-            }
-            //if 之后 child 指向左右子树中的最大值
-            if (array[child] > array[parent]) {
-                swap(array, child, parent);
-            } else {
-                break;
-            }
-            parent = child;
-            child = parent * 2 + 1;
+//时间复杂度 O(logN)
+public static void shiftDown(int[] array, int size, int index) {
+    int parent = index;//从父结点开始
+    int child = 2 * parent + 1;
+    while (child < size) {
+        if (child + 1 < size && array[child + 1] > array[child]) {
+            child = child + 1;
         }
+        //if 之后 child 指向左右子树中的最大值
+        if (array[child] > array[parent]) {
+            swap(array, child, parent);
+        } else {
+            break;
+        }
+        parent = child;
+        child = parent * 2 + 1;
     }
+}
