@@ -1,4 +1,4 @@
-public static void headSort(int[] array) {
+public static void heapSort(int[] array) {
     //1. 创建堆
     createHeap(array);
     //2. 循环取出堆顶元素，放到最后
