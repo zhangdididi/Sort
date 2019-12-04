@@ -3,7 +3,7 @@ public static void quickSort(int[] array) {
         quickSortHelper(array, 0, array.length - 1);
 }
 
-public static void quickSortHelper(int[] array, int left, int right) {
+public static void internalQuickSort(int[] array, int left, int right) {
     //如果只有一个元素或者没有元素.不需要排序
     if (left >= right) {
         return;
@@ -12,8 +12,8 @@ public static void quickSortHelper(int[] array, int left, int right) {
     //index 表示整理一次后基准值被交换到的下标位置
     int index = partition(array, left, right);
     //再根据这个基准值去取到他左侧的 right 和右侧的 left
-    quickSortHelper(array, left, index - 1);//递归基准值左侧数组
-    quickSortHelper(array, index + 1, right);//递归基准值右侧数组
+    internalQuickSort(array, left, index - 1);//递归基准值左侧数组
+    internalQuickSort(array, index + 1, right);//递归基准值右侧数组
 }
 
 private static int partition(int[] array, int left, int right) {
