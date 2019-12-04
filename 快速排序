@@ -1,7 +1,7 @@
 public static void quickSort(int[] array) {
         //要排序区间的范围
         quickSortHelper(array, 0, array.length - 1);
-    }
+}
 
 public static void quickSortHelper(int[] array, int left, int right) {
     //如果只有一个元素或者没有元素.不需要排序
