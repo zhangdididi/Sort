@@ -1,9 +1,9 @@
 public static void quickSort(int[] array) {
         //要排序区间的范围
-        quickSortHelper(array, 0, array.length - 1);
+        internalQuickSort(array, 0, array.length - 1);
 }
 
-public static void internalQuickSort(int[] array, int left, int right) {
+private static void internalQuickSort(int[] array, int left, int right) {
     //如果只有一个元素或者没有元素.不需要排序
     if (left >= right) {
         return;
