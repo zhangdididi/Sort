@@ -1,40 +1,40 @@
 
-    public static void mergeSort(int[] array) {
-        internalMergeSort(array, 0, array.length);
-    }
+public static void mergeSort(int[] array) {
+    internalMergeSort(array, 0, array.length);
+}
 
-    private static void internalMergeSort(int[] array, int left, int right) {
-        if (left >= right || right - left == 1) {
-            return;
-        }
-        int mid = (left + right) / 2;
-        internalMergeSort(array, left, mid);
-        internalMergeSort(array, mid, right);
-        merge(array, left, mid, right);
+private static void internalMergeSort(int[] array, int left, int right) {
+    if (left >= right || right - left == 1) {
+        return;
     }
+    int mid = (left + right) / 2;
+    internalMergeSort(array, left, mid);
+    internalMergeSort(array, mid, right);
+    merge(array, left, mid, right);
+}
 
-    private static void merge(int[] array, int left, int mid, int right) {
-        // 先创建用来保存有序元素的临时数组
-        int length = right - left;
-        int[] temparr = new int[length];
-        //创建临时变量来分别遍历比较两个子序列
-        int i = left, j = mid, index = 0;
-        while (i < mid && j < right) {
-            if (array[i] <= array[j]) {
-                temparr[index++] = array[i++];
-            } else {
-                temparr[index++] = array[j++];
-            }
-        }
-        //while循环结束，再将剩余的元素放进临时数组中
-        while (i < mid) {
+private static void merge(int[] array, int left, int mid, int right) {
+    // 先创建用来保存有序元素的临时数组
+    int length = right - left;
+    int[] temparr = new int[length];
+    //创建临时变量来分别遍历比较两个子序列
+    int i = left, j = mid, index = 0;
+    while (i < mid && j < right) {
+        if (array[i] <= array[j]) {
             temparr[index++] = array[i++];
-        }
-        while (j < right) {
+        } else {
             temparr[index++] = array[j++];
         }
-        //再将临时数组中拍好序的元素放回原数组
-        for (int n = 0; n < length; n++) {
-            array[n + left] = temparr[n];
-        }
     }
+    //while循环结束，再将剩余的元素放进临时数组中
+    while (i < mid) {
+        temparr[index++] = array[i++];
+    }
+    while (j < right) {
+        temparr[index++] = array[j++];
+    }
+    //再将临时数组中拍好序的元素放回原数组
+    for (int n = 0; n < length; n++) {
+        array[n + left] = temparr[n];
+    }
+}
