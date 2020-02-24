@@ -1,8 +1,13 @@
 public static void bubbleSort(int[] array) {
+    //[0, bound]作为已排序区间，[bound + 1, array.length)作为未排序区间
     for (int bound = 0; bound < array.length; bound++) {
-        for (int i = array.length - 1; i > bound; i--) {
-            if (array[i - 1] > array[i]) {
-                swap(array, i - 1, i);
+        //在未排序区间中，从数组最后一个元素一次两两比较
+        // 将较小的数字交换到已排序区间中
+        for (int curr = array.length - 1; curr > bound; curr--) {
+            if (array[curr - 1] > array[curr]) {
+                int temp = array[curr - 1];
+                array[curr - 1] = array[curr];
+                array[curr] = temp;
             }
         }
     }
