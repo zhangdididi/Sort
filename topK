@@ -1,0 +1,39 @@
+//求最小的前k个数
+public static int[] topK(int[] array, int k) {
+    //如果数组长度不够的话，就抛出异常
+    if (array == null || array.length == 0 || array.length < k) {
+        throw new RuntimeException("array's length is not enough or is null");
+    }
+    //创建保存前k小个数的数组作为返回值
+    int[] res = new int[k];
+    //创建临时变量保存数组长度
+    int length = array.length;
+    //创建优先级队列来保存元素，同时传入Comparator接口
+    //重写compare方法，保证较小的数字优先级高
+    PriorityQueue<Integer> queue = new PriorityQueue<Integer>(new Comparator<Integer>() {
+        public int compare(Integer o1, Integer o2) {
+            return o2 - o1;
+        }
+    });
+    //遍历原数组
+    for (int i = 0; i < length; i++) {
+        //如果优先级队列的长度小于k的话，就把元素插入进去
+        if (queue.size() < k) {
+            queue.offer(array[i]);
+        } else {
+            //如果长度大于等于k，且当前队列不为空时，就比较当前遍历到的数字和队首元素
+            if (!queue.isEmpty() && queue.peek() > array[i]) {
+                //队首元素大的话，就出队列，将数组当前元素插入进去
+                queue.poll();
+                queue.offer(array[i]);
+            }
+        }
+    }
+    //创建临时变量来遍历返回res数组
+    int index = 0;
+    //遍历队列，将队列元素放入数组中
+    for (Integer num : queue) {
+        res[index++] = num;
+    }
+    return res;
+}
