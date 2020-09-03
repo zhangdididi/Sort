@@ -1,3 +1,4 @@
+//可以优化，用作topK处理
 public static void bubbleSort(int[] array) {
     //[0, bound]作为已排序区间，[bound + 1, array.length)作为未排序区间
     for (int bound = 0; bound < array.length; bound++) {
