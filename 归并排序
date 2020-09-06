@@ -13,6 +13,7 @@ private static void internalMergeSort(int[] array, int left, int right) {
     merge(array, left, mid, right);
 }
 
+
 private static void merge(int[] array, int left, int mid, int right) {
     // 先创建用来保存有序元素的临时数组
     int length = right - left;
