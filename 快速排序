@@ -12,6 +12,7 @@
         internalQuickSort(array, index + 1, right);
     }
 
+
     private static int partition(int[] array, int left, int right) {
         //先创建临时变量保存基准值的下标和值
         int standardIndex = right;
